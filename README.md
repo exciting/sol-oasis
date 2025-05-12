@@ -32,6 +32,20 @@ In this README you will find instructions for:
 
 The NOMAD Oasis of the SOL group uses a list of allowed users to control access to the service. The NOMAD user names of allowed users are contained in a local file with the name `allowed-users.yaml`, which is stored in the `config` directory. To increase security, this file is not checked in to git. To create the `nomad.yaml` configuration file, please use the script `scripts/update_users.py`. It uses the template file `configs/nomad-template.yaml` and the users file `configs/allowed-users.yaml`, merges them, and **overwrites** `config/nomad.yaml`.
 
+## Environment file
+
+This configuration uses an `.env`-file. The parameters that need to be specified are:
+
+```bash
+CERT_LIVE_LOCAL_PATH=<local_path_of_active_certificate_file>
+CERT_LIVE_DOCKER_PATH=<path_of_active_certificate_file_in_docker_container>
+CERT_ARCHIVE_LOCAL_PATH=<local_path_of_archived_certificate_files>
+CERT_ARCHIVE_DOCKER_PATH=<path_of_archived_certificate_file_in_docker_container>
+
+MONGO_ADMIN_USER=<admin_username_for_jobflow_mongo_db>
+MONGO_ADMIN_PASSWORD=<admin_password_for_jobflow_mongo_db>
+```
+
 ## Jobflow-remote database
 
 This Oasis additionally runs a container for hosting a [`mongo` database](https://www.mongodb.com/) for [`jobflow remote`](https://matgenix.github.io/jobflow-remote/). The database is password protected and only registered users have access. To add users, please create the file `configs/jobflow-users.js` with the following content:
@@ -49,7 +63,7 @@ if (!db.getUser("<user_name>")) {
 }
 ```
 
-connect to the running container via:
+For each user, add an individual block. Then, connect to the running container via:
 
 ```bash
 docker exec -ti jobflow_db bash
@@ -58,7 +72,34 @@ docker exec -ti jobflow_db bash
 and type in the console:
 
 ```bash
+mongosh -u $MONGO_ADMIN_USER -p $MONGO_ADMIN_PASSWORD
 ```
+
+Then, load the user configuration file with:
+
+```js
+load('/jobflow/jobflow-users.js')
+```
+
+The script should create users that are missing and print to the console if the user exists. You can then leave the mongo shell by typing:
+
+```js
+exit
+```
+
+and leave the container by typing:
+
+```bash
+exit
+```
+
+To add more users later, just repeat the steps by adding the corresponding blocks to the file (`configs/jobflow-users.js`), restarting the container with:
+
+```bash
+docker restart jobflow_db
+```
+
+and following the steps above.
 
 ## Using the ssl configuration
 
