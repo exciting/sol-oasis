@@ -1,1 +1,5 @@
 allowed-users.yaml
+nomad.yaml
+mongo-init.js
+nginx.ssl.conf
+jobflow-users.js

@@ -28,6 +28,42 @@ In this README you will find instructions for:
 4. [Updating the distribution from the template](#updating-the-distribution-from-the-template)
 5. [Solving common issues](#faqtrouble-shooting)
 
+## Access control
+
+The NOMAD Oasis of the SOL group uses a list of allowed users to control access to the service. The NOMAD user names of allowed users are contained in a local file with the name `allowed-users.yaml`, which is stored in the `config` directory. To increase security, this file is not checked in to git. To create the `nomad.yaml` configuration file, please use the script `scripts/update_users.py`. It uses the template file `configs/nomad-template.yaml` and the users file `configs/allowed-users.yaml`, merges them, and **overwrites** `config/nomad.yaml`.
+
+## Jobflow-remote database
+
+This Oasis additionally runs a container for hosting a [`mongo` database](https://www.mongodb.com/) for [`jobflow remote`](https://matgenix.github.io/jobflow-remote/). The database is password protected and only registered users have access. To add users, please create the file `configs/jobflow-users.js` with the following content:
+
+```js
+db = db.getSiblingDB('<unique_database_name_for_user>');
+if (!db.getUser("<user_name>")) {
+  db.createUser({
+    user: "<user_name>",
+    pwd: "<user_password>",
+    roles: [ { role: "readWrite", db: "<unique_database_name_for_user>" } ]
+  });
+} else {
+  print("User already exists.");
+}
+```
+
+connect to the running container via:
+
+```bash
+docker exec -ti jobflow_db bash
+```
+
+and type in the console:
+
+```bash
+```
+
+## Using the ssl configuration
+
+By default, this Oasis uses SSL encrypted commutication. It uses the `nginx` configuration file `configs/nomad.ssl.conf`. To create this file, the template `config/nginx.ssl.conf.template` can be used. There, the placeholders `YOUR_URL` and `CERT_LIVE_DOCKER_PATH` need to be replaced with the relevant values. 
+
 ## Deploying the distribution
 
 Below are instructions for how to deploy this NOMAD Oasis distribution

@@ -1,6 +1,7 @@
 services:
-  api_host: "localhost"
+  api_host: "sol-oasis.physik.hu-berlin.de"
   api_base_path: "/nomad-oasis"
+  upload_limit: 1000
 
 oasis:
   is_oasis: true
@@ -15,8 +16,8 @@ north:
 
 meta:
   deployment: "oasis"
-  deployment_url: "https://my-oasis.org/api"
-  maintainer_email: "me@my-oasis.org"
+  deployment_url: "https://sol-oasis.physik.hu-berlin.de/nomad-oasis/api"
+  maintainer_email: "kuban@physik.hu-berlin.de"
 
 logstash:
   enable: false
@@ -27,3 +28,9 @@ mongo:
 elastic:
   entries_index: nomad_oasis_entries_v1
   materials_index: nomad_oasis_materials_v1
+
+celery:
+  timeout: 3600
+
+process:
+  max_upload_size: 2040109465600 #255 Gb
