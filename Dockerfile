@@ -104,7 +104,8 @@ FROM base_final AS final
 COPY --chown=nomad:1000 --from=builder /opt/venv /opt/venv
 COPY --chown=nomad:1000 scripts/run.sh .
 COPY --chown=nomad:1000 scripts/run-worker.sh .
-COPY configs/nomad.yaml nomad.yaml
+
+# COPY configs/nomad.yaml nomad.yaml
 
 RUN mkdir -p /app/.volumes/fs \
  && chown -R nomad:1000 /app \
