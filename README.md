@@ -37,10 +37,7 @@ The NOMAD Oasis of the SOL group uses a list of allowed users to control access 
 This configuration uses an `.env`-file. The parameters that need to be specified are:
 
 ```bash
-CERT_LIVE_LOCAL_PATH=<local_path_of_active_certificate_file>
-CERT_LIVE_DOCKER_PATH=<path_of_active_certificate_file_in_docker_container>
-CERT_ARCHIVE_LOCAL_PATH=<local_path_of_archived_certificate_files>
-CERT_ARCHIVE_DOCKER_PATH=<path_of_archived_certificate_file_in_docker_container>
+CERT_LOCAL_PATH=<local_path_of_active_certificate_file>
 
 MONGO_ADMIN_USER=<admin_username_for_jobflow_mongo_db>
 MONGO_ADMIN_PASSWORD=<admin_password_for_jobflow_mongo_db>
@@ -103,7 +100,7 @@ and following the steps above.
 
 ## Using the ssl configuration
 
-By default, this Oasis uses SSL encrypted commutication. It uses the `nginx` configuration file `configs/nomad.ssl.conf`. To create this file, the template `config/nginx.ssl.conf.template` can be used. There, the placeholders `YOUR_URL` and `CERT_LIVE_DOCKER_PATH` need to be replaced with the relevant values. 
+By default, this Oasis uses SSL encrypted commutication. It uses the `nginx` configuration file `configs/nomad.ssl.conf`. In this example, a self-signed certificate is used. In a production evironment, replace the certificate and key names in `configs/nomad.ssl.conf` and `nginx.full.conf` with the actual key file names. 
 
 ## Deploying the distribution
 

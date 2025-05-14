@@ -192,10 +192,9 @@ services:
     container_name: nomad_oasis_proxy
     command: nginx -g 'daemon off;'
     volumes:
-      - ./configs/nginx.ssl.conf:/etc/nginx/conf.d/default.conf
-      - ./configs/nginx.full.conf:/etc/nginx/nginx.conf
-      - ${CERT_LIVE_LOCAL_PATH}:${CERT_LIVE_DOCKER_PATH}:ro
-      - ${CERT_ARCHIVE_LOCAL_PATH}:${CERT_ARCHIVE_DOCKER_PATH}:ro
+      - ./configs/nginx.ssl.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./configs/nginx.full.conf:/etc/nginx/nginx.conf:ro
+      - ${CERT_LOCAL_PATH}:/etc/nginx/ssl/:ro
 
     depends_on:
       app:
