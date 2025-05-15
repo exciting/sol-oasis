@@ -28,6 +28,80 @@ In this README you will find instructions for:
 4. [Updating the distribution from the template](#updating-the-distribution-from-the-template)
 5. [Solving common issues](#faqtrouble-shooting)
 
+## Access control
+
+The NOMAD Oasis of the SOL group uses a list of allowed users to control access to the service. The NOMAD user names of allowed users are contained in a local file with the name `allowed-users.yaml`, which is stored in the `config` directory. To increase security, this file is not checked in to git. To create the `nomad.yaml` configuration file, please use the script `scripts/update_users.py`. It uses the template file `configs/nomad-template.yaml` and the users file `configs/allowed-users.yaml`, merges them, and **overwrites** `config/nomad.yaml`.
+
+## Environment file
+
+This configuration uses an `.env`-file. The parameters that need to be specified are:
+
+```bash
+CERT_LOCAL_PATH=<local_path_of_active_certificate_file>
+
+MONGO_INITDB_ROOT_USERNAME=<admin_username_for_jobflow_mongo_db>
+MONGO_INITDB_ROOT_PASSWORD=<admin_password_for_jobflow_mongo_db>
+```
+
+## Jobflow-remote database
+
+This Oasis additionally runs a container for hosting a [`mongo` database](https://www.mongodb.com/) for [`jobflow remote`](https://matgenix.github.io/jobflow-remote/). The database is password protected and only registered users have access. To add users, please create the file `configs/jobflow-users.js` with the following content:
+
+```js
+db = db.getSiblingDB('<unique_database_name_for_user>');
+if (!db.getUser("<user_name>")) {
+  db.createUser({
+    user: "<user_name>",
+    pwd: "<user_password>",
+    roles: [ { role: "readWrite", db: "<unique_database_name_for_user>" } ]
+  });
+} else {
+  print("User already exists.");
+}
+```
+
+For each user, add an individual block. Then, connect to the running container via:
+
+```bash
+docker exec -ti jobflow_db bash
+```
+
+and type in the console:
+
+```bash
+mongosh -u $MONGO_INITDB_ROOT_USERNAME -p $MONGO_INITDB_ROOT_PASSWORD
+```
+
+Then, load the user configuration file with:
+
+```js
+load('/jobflow/jobflow-users.js')
+```
+
+The script should create users that are missing and print to the console if the user exists. You can then leave the mongo shell by typing:
+
+```js
+exit
+```
+
+and leave the container by typing:
+
+```bash
+exit
+```
+
+To add more users later, just repeat the steps by adding the corresponding blocks to the file (`configs/jobflow-users.js`), restarting the container with:
+
+```bash
+docker restart jobflow_db
+```
+
+and following the steps above.
+
+## Using the ssl configuration
+
+By default, this Oasis uses SSL encrypted commutication. It uses the `nginx` configuration file `configs/nomad.ssl.conf`. In this example, a self-signed certificate is used. In a production evironment, replace the certificate and key names in `configs/nomad.ssl.conf` and `nginx.full.conf` with the actual key file names. 
+
 ## Deploying the distribution
 
 Below are instructions for how to deploy this NOMAD Oasis distribution

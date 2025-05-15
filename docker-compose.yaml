@@ -1,3 +1,5 @@
+version: "3"
+
 services:
   # broker for celery
   rabbitmq:
@@ -49,8 +51,9 @@ services:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
     volumes:
-      - mongo:/data/db
-      - ./.volumes/mongo:/backup
+      - /nomad/mongo:/data/db
+      - /nomad/mongo_config:/data/configdb
+      - /nomad/.volumes/mongo:/backup
     command: mongod --logpath=/dev/null # --quiet
     healthcheck:
       test:
@@ -84,8 +87,8 @@ services:
       mongo:
         condition: service_healthy
     volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      - ./configs/nomad.yaml:/app/nomad.yaml
+      - /nomad/.volumes/fs:/app/.volumes/fs
     command: python -m celery -A nomad.processing worker -l info -Q celery
 
   # nomad app (api + proxy)
@@ -112,8 +115,8 @@ services:
       north:
         condition: service_started
     volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      - ./configs/nomad.yaml:/app/nomad.yaml
+      - /nomad/.volumes/fs:/app/.volumes/fs
     command: ./run.sh
     healthcheck:
       test:
@@ -144,8 +147,8 @@ services:
       NOMAD_ELASTIC_HOST: elastic
       NOMAD_MONGO_HOST: mongo
     volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      - ./configs/nomad.yaml:/app/nomad.yaml
+      - /nomad/.volumes/fs:/app/.volumes/fs
       - /var/run/docker.sock:/var/run/docker.sock
     user: "1000:991"
     command: python -m nomad.cli admin run hub
@@ -177,7 +180,7 @@ services:
       mongo:
         condition: service_healthy
     volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
+      - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
     command: python -m nomad.cli admin run logtransfer
     profiles: ["with_logtransfer"]
@@ -189,7 +192,10 @@ services:
     container_name: nomad_oasis_proxy
     command: nginx -g 'daemon off;'
     volumes:
-      - ./configs/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./configs/nginx.ssl.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./configs/nginx.full.conf:/etc/nginx/nginx.conf:ro
+      - ${CERT_LOCAL_PATH}:/etc/nginx/ssl/:ro
+
     depends_on:
       app:
         condition: service_healthy
@@ -199,6 +205,8 @@ services:
         condition: service_healthy
     ports:
       - 80:80
+      - 443:443
+      - 27010:27010
 
   # jupyterlab image: (this is only used to pull the image, no service is run for this)
   jupyterlab_image:
@@ -209,9 +217,22 @@ services:
     deploy:
       replicas: 0 # Ensures the service isn't started
 
+  jobflow_db:
+    image: mongo:5.0.6
+    container_name: jobflow_mongo
+    restart: unless-stopped
+    env_file: .env
+    command: mongod --logpath=/dev/null --auth #quiet, require authentification
+    volumes:
+      - /jobflow_db/jobflow_mongo:/data/db
+      - ./configs/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./configs/jobflow-users.js:/jobflow/jobflow-users.js
+
 volumes:
   mongo:
     name: "nomad_oasis_mongo"
+  mongo_config:
+    name: "nomad_oasis_mongo_config"
   elastic:
     name: "nomad_oasis_elastic"
   rabbitmq:
@@ -222,3 +243,6 @@ volumes:
 networks:
   default:
     name: nomad_oasis_network
+    driver_opts: 
+      # adapt MTU for HU network
+      com.docker.network.driver.mtu: 1396
