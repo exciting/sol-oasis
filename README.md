@@ -39,8 +39,8 @@ This configuration uses an `.env`-file. The parameters that need to be specified
 ```bash
 CERT_LOCAL_PATH=<local_path_of_active_certificate_file>
 
-MONGO_ADMIN_USER=<admin_username_for_jobflow_mongo_db>
-MONGO_ADMIN_PASSWORD=<admin_password_for_jobflow_mongo_db>
+MONGO_INITDB_ROOT_USERNAME=<admin_username_for_jobflow_mongo_db>
+MONGO_INITDB_ROOT_PASSWORD=<admin_password_for_jobflow_mongo_db>
 ```
 
 ## Jobflow-remote database
@@ -69,7 +69,7 @@ docker exec -ti jobflow_db bash
 and type in the console:
 
 ```bash
-mongosh -u $MONGO_ADMIN_USER -p $MONGO_ADMIN_PASSWORD
+mongosh -u $MONGO_INITDB_ROOT_USERNAME -p $MONGO_INITDB_ROOT_PASSWORD
 ```
 
 Then, load the user configuration file with:

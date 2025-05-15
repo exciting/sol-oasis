@@ -222,10 +222,7 @@ services:
     container_name: jobflow_mongo
     restart: unless-stopped
     env_file: .env
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ADMIN_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ADMIN_PASSWORD}
-    command: mongod  --auth #quiet --logpath=/dev/null, require authentification
+    command: mongod --logpath=/dev/null --auth #quiet, require authentification
     volumes:
       - /jobflow_db/jobflow_mongo:/data/db
       - ./configs/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
