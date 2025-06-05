@@ -2,6 +2,8 @@ services:
   api_host: "sol-oasis.physik.hu-berlin.de"
   api_base_path: "/nomad-oasis"
   upload_limit: 1000
+  https: true
+  https_upload: true
 
 oasis:
   is_oasis: true
