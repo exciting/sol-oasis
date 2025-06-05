@@ -98,6 +98,19 @@ docker restart jobflow_db
 
 and following the steps above.
 
+Backups of the jobflow-remote database can be created with:
+
+```bash
+docker exec jobflow_mongo sh -c 'mongodump -u $MONGO_INITDB_ROOT_USERNAME -p $MONGO_INITDB_ROOT_PASSWORD -o /backup'
+```
+
+Backups of the jobflow-remote database can be restored using:
+
+```bash
+docker exec jobflow_mongo sh -c 'mongorestore -u $MONGO_INITDB_ROOT_USERNAME -p $MONGO_INITDB_ROOT_PASSWORD /backup'
+```
+
+
 ## Using the ssl configuration
 
 By default, this Oasis uses SSL encrypted commutication. It uses the `nginx` configuration file `configs/nomad.ssl.conf`. In this example, a self-signed certificate is used. In a production evironment, replace the certificate and key names in `configs/nomad.ssl.conf` and `nginx.full.conf` with the actual key file names. 
