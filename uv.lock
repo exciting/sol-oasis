@@ -2104,15 +2104,15 @@ wheels = [
 
 [[package]]
 name = "nomad-normalizer-plugin-dos"
-version = "1.0"
+version = "1.0.5"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "nomad-dos-fingerprints" },
     { name = "nomad-lab" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e4/ce/582250ec552f0ceeff88f06b34fb5ed22861de3b12ef381214ed8dbcf593/nomad_normalizer_plugin_dos-1.0.tar.gz", hash = "sha256:62b63c8fdbb964a1afc92f24f6b52e8ebf7c885966243eb54c587577b9233a4e", size = 14832, upload-time = "2024-09-11T16:23:51.181Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b3/d2/d8d33022f5f38d9a953a9a620f8ba66a606f5e527b5d6613f7f348391e3d/nomad_normalizer_plugin_dos-1.0.5.tar.gz", hash = "sha256:9f11101ce70d8126705914ed54c7532c9a18d1f2521919d63c35e35f1ee2de5e", size = 1088170, upload-time = "2025-03-17T14:08:17.554Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d3/01/5b7835d044c30dc71aec82e2982529fda9de54f6705079ecc14277eb05c2/nomad_normalizer_plugin_dos-1.0-py3-none-any.whl", hash = "sha256:cd37af4a625e7e66c6e0e9ff8c28600ce7e497b3457919fc58ddc49b5bffb7a2", size = 12527, upload-time = "2024-09-11T16:23:49.956Z" },
+    { url = "https://files.pythonhosted.org/packages/15/f3/061615643ec48c8d29a639d6e96d2e79b6c9ad7b98c1410b5e7ddeaab9c8/nomad_normalizer_plugin_dos-1.0.5-py3-none-any.whl", hash = "sha256:e111eb5cdfa58a564246188511cc56024f9adb1cea3ca52e5183bded3b16a4da", size = 12902, upload-time = "2025-03-17T14:08:16.031Z" },
 ]
 
 [[package]]
