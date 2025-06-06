@@ -47,25 +47,33 @@ MONGO_INITDB_ROOT_PASSWORD=<admin_password_for_jobflow_mongo_db>
 
 ## Jobflow-remote database
 
-This Oasis additionally runs a container for hosting a [`mongo` database](https://www.mongodb.com/) for [`jobflow remote`](https://matgenix.github.io/jobflow-remote/). The database is password protected and only registered users have access. To add users, please create the file `configs/jobflow-users.js` with the following content:
+This Oasis additionally runs a container for hosting a [`mongo` database](https://www.mongodb.com/) for [`jobflow remote`](https://matgenix.github.io/jobflow-remote/). The database is password protected and only registered users have access. To add users, you can create a file at `configs/jobflow-users.js` and add, _e.g._, the following content:
 
 ```js
-db = db.getSiblingDB('<unique_database_name_for_user>');
-if (!db.getUser("<user_name>")) {
-  db.createUser({
-    user: "<user_name>",
-    pwd: "<user_password>",
-    roles: [ { role: "readWrite", db: "<unique_database_name_for_user>" } ]
-  });
-} else {
-  print("User already exists.");
+function user_to_db(_db_name, _user, _pwd, _role="readWrite") {
+  _db = db.getSiblingDB(_db_name);
+  if (!_db.getUser(_user)) {
+    _db.createUser({
+      user: _user,
+      pwd: _pwd,
+      roles: [ { role: _role, db: _db_name } ]
+    });
+    print(`Added ${_user} to database ${_db_name}.`);
+  } else {
+    print(`User ${_user} already exists in database ${_db_name}.`);
+  }
 }
+
+// add users here
+user_to_db('jobflow_database_1', 'user1', 'password1')
+user_to_db('jobflow_database_1', 'user2', 'password2')
+user_to_db('jobflow_database_2', 'user2', 'password2')
 ```
 
-For each user, add an individual block. Then, connect to the running container via:
+Replace the database names (`jobflow_database_1`, ...), the user names (`user1`, ...), and their passwords (`password1`, ...) with the actual data of your users. Then, connect to the running container via:
 
 ```bash
-docker exec -ti jobflow_db bash
+docker exec -ti jobflow_mongo bash
 ```
 
 and type in the console:
