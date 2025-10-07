@@ -103,7 +103,7 @@ exit
 To add more users later, just repeat the steps by adding the corresponding blocks to the file (`configs/jobflow-users.js`), restarting the container with:
 
 ```bash
-docker restart jobflow_db
+docker restart jobflow_mongo
 ```
 
 and following the steps above.
@@ -123,7 +123,7 @@ docker exec jobflow_mongo sh -c 'mongorestore -u $MONGO_INITDB_ROOT_USERNAME -p 
 
 ## Using the ssl configuration
 
-By default, this Oasis uses SSL encrypted commutication. It uses the `nginx` configuration file `configs/nomad.ssl.conf`. In this example, a self-signed certificate is used. In a production evironment, replace the certificate and key names in `configs/nomad.ssl.conf` and `nginx.full.conf` with the actual key file names. See also below for more explanations about using TLS.
+By default, this Oasis uses SSL encrypted commutication. It uses the `nginx` configuration file `configs/nomad.ssl.conf`. In this example, a self-signed certificate is used. In a production evironment, replace the certificate and key names in `configs/nomad.ssl.conf` and `nginx.full.conf` with the actual key file names. Note that you may have to explicitly mount both the certificate and the key files into the container. See also below for more explanations about using TLS.
 
 ## Deploying the distribution
 
