@@ -229,7 +229,7 @@ services:
     environment:
       - MONGO_DATA_DIR=/data/db
     env_file: .env
-    command: mongod --logpath=/dev/null --auth #quiet, require authentification
+    command: mongod --logpath=/dev/null --auth --wiredTigerCacheSizeGB 4 #quiet, require authentification, limit cache size to 4 GB
     volumes:
       - /jobflow_db/jobflow_mongo:/data/db
       - /jobflow_db/jobflow_mongo_backup:/backup
