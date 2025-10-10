@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.10, <3.13"
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32'",
@@ -2218,14 +2218,14 @@ wheels = [
 
 [[package]]
 name = "nomad-normalizer-plugin-system"
-version = "1.0.3"
+version = "1.0.4"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "nomad-lab" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/62/da/3d4c335024877f9257243605c8dec088f0eaa56fbe1ad135ad3325298232/nomad_normalizer_plugin_system-1.0.3.tar.gz", hash = "sha256:b526e41dfbb0f5baf53e902b6392c9cbc0a12cd397e31355abac80c2b09e4d00", size = 19867380, upload-time = "2025-03-17T12:53:02.238Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/11/e4/b3a2d51bacff41101a25e048a75cd53decfeb2ca602283b6e8c5c3912ef2/nomad_normalizer_plugin_system-1.0.4.tar.gz", hash = "sha256:8f1d8c2f1bec1005d96a0bd768504d6000e80c230a0710909728ae35b8687b93", size = 19867793, upload-time = "2025-08-11T10:29:14.387Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/57/2e/80b58c53ac04d58ae01cd185a7fdff9119718d4099664b8af6a5e486ba3c/nomad_normalizer_plugin_system-1.0.3-py3-none-any.whl", hash = "sha256:f8314a661630dd0c6ad79f08ff6dd02ca160a99f0eb496ba2f23bf047b81eca8", size = 12969, upload-time = "2025-03-17T12:53:00.378Z" },
+    { url = "https://files.pythonhosted.org/packages/02/3c/ee50b911046cae94e0d2bf6b45cb799964c2cb41b2877b065aa434a72a23/nomad_normalizer_plugin_system-1.0.4-py3-none-any.whl", hash = "sha256:f0974c4d2ef073f5d7cf100230f3261f1636976f310daf6f3f45afa2d5b33995", size = 13021, upload-time = "2025-08-11T10:29:12.025Z" },
 ]
 
 [[package]]
