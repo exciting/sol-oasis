@@ -2302,22 +2302,22 @@ wheels = [
 
 [[package]]
 name = "nomad-parser-plugins-workflow"
-version = "1.1.8"
+version = "1.1.9"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "asr" },
     { name = "h5py" },
     { name = "lxml" },
-    { name = "nomad-lab" },
+    { name = "nomad-lab", extra = ["infrastructure"] },
     { name = "nomad-schema-plugin-run" },
     { name = "nomad-schema-plugin-simulation-workflow" },
     { name = "phonopy" },
     { name = "pydantic" },
     { name = "xarray" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/50/03/f616a9962889c6bd06c0cc037d39138d8359af5858fdbd7caa8fc1c8c728/nomad_parser_plugins_workflow-1.1.8.tar.gz", hash = "sha256:df8603a0dbb8400a4e8005adb46290e7f06c628335fd6cc5ced79039d0f0ff8c", size = 31864751, upload-time = "2025-06-06T10:01:56.732Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/eb/dd/b7c4abf772923e178cdada36c5eda63e3b7c6520a12e952caa487c4b94dd/nomad_parser_plugins_workflow-1.1.9.tar.gz", hash = "sha256:e0a102249111ca0c49473912d6a20e1b0351ce470631ca78bee79cab664cf88c", size = 31955589, upload-time = "2025-07-30T10:59:41.918Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/41/08/f2e69dac27a956e6f54cb930fab5ea93f62f30a3dce2b231a64f958af998/nomad_parser_plugins_workflow-1.1.8-py3-none-any.whl", hash = "sha256:0e932fababf0ffff5186b3c177ecd1c430b456d09b79a54b36fb1aac735268f6", size = 121426, upload-time = "2025-06-06T10:01:54.872Z" },
+    { url = "https://files.pythonhosted.org/packages/1b/a1/9557a4c29e8260d8c0a68b6355580c0f7a0f1fc417469ba19f7e7ba8358f/nomad_parser_plugins_workflow-1.1.9-py3-none-any.whl", hash = "sha256:470bd09786b42d29f57b1f99c89e1891f5a908a54684e0436a2d99b3d44407a7", size = 122439, upload-time = "2025-07-30T10:59:39.457Z" },
 ]
 
 [[package]]
@@ -2585,7 +2585,7 @@ wheels = [
 
 [[package]]
 name = "phonopy"
-version = "2.38.2"
+version = "2.38.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "h5py" },
@@ -2595,23 +2595,23 @@ dependencies = [
     { name = "spglib" },
     { name = "symfc" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a5/c7/36be3fd247d1a8d5b5bfa0cb241f17e3fb22fff63eddbd17023b7246633f/phonopy-2.38.2.tar.gz", hash = "sha256:c377f52a8382705b3e3b23473ac9ab3e3ea6ca7aa3a72ebac9f0c30dd73792fa", size = 4714636, upload-time = "2025-04-29T23:57:18.101Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d1/bf/7579c5618db1719fb97d3450b5fc6a3c75fbf57715b2dbb0f9afb21baa35/phonopy-2.38.0.tar.gz", hash = "sha256:f2c285affe76b45fcef59d6323c7da727bbcfcdf25e0684cbdae46fccdcf40cf", size = 4712135, upload-time = "2025-03-03T03:10:51.134Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a4/0f/fca33718f41cd31fe7798232c9191346834ffb9e1d4257f849684d67315b/phonopy-2.38.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:94a8ff1ae976c8da38b5208008b71d4ac38b4163e224bef01f2f5dfc53f7419f", size = 504595, upload-time = "2025-04-30T00:06:05.338Z" },
-    { url = "https://files.pythonhosted.org/packages/0a/1e/9cee17d7954c3f3b8dcd0571ecdb0c83e7f5fee2f81b42e4fe3153d61efc/phonopy-2.38.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a7ab5f9edb154a1164c8907ddf1cd49960f904d1ab8d33af0224381852fcac80", size = 593498, upload-time = "2025-04-30T00:06:07.116Z" },
-    { url = "https://files.pythonhosted.org/packages/85/35/38b6c11b2198428aad79466c86e37e3553a55cffa12e8e1016a9ad051c17/phonopy-2.38.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:08d2ae41af84a9b39c3f367e3d8ecb50048ab2e3b11857fc832cc5777b3e57e2", size = 598453, upload-time = "2025-04-30T00:06:08.17Z" },
-    { url = "https://files.pythonhosted.org/packages/98/06/1810b139418951af60ebc67491cfda4fa73a4c47d71ee9ca37ba194bdb8f/phonopy-2.38.2-cp310-cp310-win32.whl", hash = "sha256:45cfa9edc0c16b152a26a137eb702a86874935601ddbe350993ef611d3708f8b", size = 500915, upload-time = "2025-04-30T00:06:09.704Z" },
-    { url = "https://files.pythonhosted.org/packages/67/87/b75dbf6a57705dc15568a39355f0ed55762f745be1e69fa6d37afc1ef401/phonopy-2.38.2-cp310-cp310-win_amd64.whl", hash = "sha256:46f3da2fea6ceeab273c9d8749823f6d7d0b35efd3470a761740a1fb0f297541", size = 514505, upload-time = "2025-04-30T00:06:10.908Z" },
-    { url = "https://files.pythonhosted.org/packages/e6/c5/75472512439af470e22be31ad5a5e0752a293cab0b1af445af5f07e2eb33/phonopy-2.38.2-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:40738400c9bd9b3842a8da5981fe139253a090ae69759cda832561b64b1037ed", size = 504446, upload-time = "2025-04-30T00:06:12.502Z" },
-    { url = "https://files.pythonhosted.org/packages/6c/8f/f547f6cf9183b9f7bd75de9450bf90744c2033f04a0f9723b6df0bed8d50/phonopy-2.38.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0b198b3947be86ab70983a56ce0d4e207abd97fc348e87a40c142d63e957efae", size = 593381, upload-time = "2025-04-30T00:06:14.002Z" },
-    { url = "https://files.pythonhosted.org/packages/79/35/a2db7b590ff509e280864e48e2724c29d9b79f5e5ce2a92aad70fa878d30/phonopy-2.38.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a5e04154c5512674ea0c9051cf7924f14d8447e12a34cac5902f8f8554ff2d7f", size = 598295, upload-time = "2025-04-30T00:06:15.541Z" },
-    { url = "https://files.pythonhosted.org/packages/26/e5/70744401222c8d6acfb8fb3f62f8ca51b3b44b5dda7abcb76a6d5471b7fb/phonopy-2.38.2-cp311-cp311-win32.whl", hash = "sha256:adb0baec629c5a585b3c2c7c66c3dfe35f32c1e1677b7cfb6cd818b787b27313", size = 500771, upload-time = "2025-04-30T00:06:16.603Z" },
-    { url = "https://files.pythonhosted.org/packages/7f/e8/0bc3a3de08f54f21ae122a0803ca1a1cc3bb3e3f291ac966188bf8ae2f5e/phonopy-2.38.2-cp311-cp311-win_amd64.whl", hash = "sha256:327a6026c66a5b222864042c59aa8bc4d4720ab788ad4e9c13dcb0286f1832b0", size = 514332, upload-time = "2025-04-30T00:06:18.118Z" },
-    { url = "https://files.pythonhosted.org/packages/aa/8e/b67c17f6c01cb34e0b07b1e27cf8f35f1f972d23c38a6ab55154a5d79372/phonopy-2.38.2-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:d290044a310fb74ab62ef180201935b4edbe366f97c04dd7861ebe34d720ecbb", size = 502870, upload-time = "2025-04-30T00:06:19.185Z" },
-    { url = "https://files.pythonhosted.org/packages/78/e8/2259898bca22cb03c34d31c8a91efdd6b02df6bb9e06a4f0aedb36166b62/phonopy-2.38.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:011569e372e45fa904e6e83437c855a070d1c939020154e95a8898254aa6618d", size = 590393, upload-time = "2025-04-30T00:06:20.559Z" },
-    { url = "https://files.pythonhosted.org/packages/cc/da/8836619db7c762ee3b31907e5fac1b4c3fc6a8df278ca1f2668990a9dbf4/phonopy-2.38.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1b8a6f9153356bab5c623adcc3a70c648504919e244154daf5286c4bd5cd8d12", size = 595448, upload-time = "2025-04-30T00:06:22.475Z" },
-    { url = "https://files.pythonhosted.org/packages/b6/d9/2e637f9c2de34c6833e041f6bdc5a52d1d5f3f06432e42b434dab4c7371f/phonopy-2.38.2-cp312-cp312-win32.whl", hash = "sha256:c70c0039ad10f64df33e7ab09e3bce2bf12cd89b0b86ed5c13cd4fa58de2871a", size = 499221, upload-time = "2025-04-30T00:06:24.142Z" },
-    { url = "https://files.pythonhosted.org/packages/37/18/2a3b2e079eb2cc09202a754e7d5438534179e30b64a213ad0f7013dee32d/phonopy-2.38.2-cp312-cp312-win_amd64.whl", hash = "sha256:a3d58e3d4f279c5a0020416573c19506277f2b7334e05fe2145e9dcb8132b443", size = 512902, upload-time = "2025-04-30T00:06:25.772Z" },
+    { url = "https://files.pythonhosted.org/packages/83/9e/b3cd957efbf3c9c7c2bcf8fee0ddbc5dd6f32c192711179e353bc4d41bbd/phonopy-2.38.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:ce73a0144de817bfaa2c7af47c121d228b9274f93a70c3cf90ad00d824dd653b", size = 500171, upload-time = "2025-03-03T03:29:31.135Z" },
+    { url = "https://files.pythonhosted.org/packages/24/b7/2af539a0057133014942b7194d72a21e2d06fe8d720c5db0e0a86f421201/phonopy-2.38.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d493ec9a54de130ca3546882793073351e8aa6114020af52baaa90f03df9cd62", size = 588958, upload-time = "2025-03-03T03:29:33.219Z" },
+    { url = "https://files.pythonhosted.org/packages/b8/25/279a8e53311c03409b9fc6aec5ed12ef5564f25d99aef2300e17c498e429/phonopy-2.38.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:384bc17a388d0f862ce1fc9e4486052019ec0f6adf765ad4c9d3ebf3d7aee2f4", size = 593849, upload-time = "2025-03-03T03:29:35.185Z" },
+    { url = "https://files.pythonhosted.org/packages/42/cb/14404e56a912d78bba35eb5011ef99c5cb1ca9a2f823aa7a38c877101924/phonopy-2.38.0-cp310-cp310-win32.whl", hash = "sha256:6973aeebd9c5c9ed92d5170038f4bddbc49269678e57d945d1143d0d72c5192e", size = 497312, upload-time = "2025-03-03T03:29:36.958Z" },
+    { url = "https://files.pythonhosted.org/packages/40/34/15ffe30d7bace086d17a843202cd0c5086b3e3331bd809892bdcfde49c10/phonopy-2.38.0-cp310-cp310-win_amd64.whl", hash = "sha256:9c87bb8bc0de487fd14d23f4d72a73493529a327bce4b00e4364b94ad51d4028", size = 512012, upload-time = "2025-03-03T03:29:38.048Z" },
+    { url = "https://files.pythonhosted.org/packages/d3/70/e4f000e40928b908b4de8a2ab763f1b64fe1c47b84dd274d0af5d8828f54/phonopy-2.38.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:9cbfc6cb83d181474079b3baee35cdb7d6ecb923690fbf2cd0221beb0eda1c9d", size = 500012, upload-time = "2025-03-03T03:29:39.737Z" },
+    { url = "https://files.pythonhosted.org/packages/26/95/94e1dc6f2dc86d41991b81becdbe603e44ca72a0937a9c1c642337b0921c/phonopy-2.38.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:670fdf6aa3e3d83c16e1502d5c74036c6ca25fb98f4369e283998fa6ffd065ee", size = 588818, upload-time = "2025-03-03T03:29:40.781Z" },
+    { url = "https://files.pythonhosted.org/packages/e0/6c/03b0c726100c8625abc6eeeadd7f96aed2c3256f0a8432b5519c1ccc0aa0/phonopy-2.38.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5fc377e23e4e2c33cf1c7b6f7d479d4dd7c2add079a4749eb2e476067d4eb5c8", size = 593684, upload-time = "2025-03-03T03:29:42.229Z" },
+    { url = "https://files.pythonhosted.org/packages/c6/4b/b77e5ecf757f3bd848f7dac6884024b518850ca3d726b90706360ba2ade9/phonopy-2.38.0-cp311-cp311-win32.whl", hash = "sha256:71deba8f1e26b7a3454e59c022ce772465fa0a9fb8276643b1cd12e00108d9f2", size = 497127, upload-time = "2025-03-03T03:29:43.301Z" },
+    { url = "https://files.pythonhosted.org/packages/6a/a9/8bba26226fba5b0db4075d1840080e46431409628ead5a900ef37c53eef9/phonopy-2.38.0-cp311-cp311-win_amd64.whl", hash = "sha256:e6afc1c629e7beb680389dc7c1100f623c80f01ade0cfb96c1f1498b46ace131", size = 511825, upload-time = "2025-03-03T03:29:45.041Z" },
+    { url = "https://files.pythonhosted.org/packages/eb/af/2e207f0727950242248ed382b88061eb5d73bd26239c13f0b53a57f1bc0e/phonopy-2.38.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:96feff9cf014765b7093c38fd1d564f769acbfddf88781dcfca0f9c4c9b03629", size = 497788, upload-time = "2025-03-03T03:29:46.078Z" },
+    { url = "https://files.pythonhosted.org/packages/5e/a9/52859f20963754b3e0e39674208bf50196ad91c537afe87dc4e50a32bba8/phonopy-2.38.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f7cca7636350dd42a4c686bc54ff443601e7957d6eaa9e78caf05c4e1f7e9487", size = 585974, upload-time = "2025-03-03T03:29:47.546Z" },
+    { url = "https://files.pythonhosted.org/packages/f3/31/012ca83c6bb91836f5cc2d95319c443e93789580690068325d3f25a47e6f/phonopy-2.38.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e088479bf4496f0b302edffba2f71e3bad472ddd24e8e4dabef414d2972b0612", size = 590873, upload-time = "2025-03-03T03:29:48.559Z" },
+    { url = "https://files.pythonhosted.org/packages/f0/86/ddf5cdd17e9a5f1f3bfeeb085ad0a9a4173707189cef15361bb044c82449/phonopy-2.38.0-cp312-cp312-win32.whl", hash = "sha256:f3634c5c49caec381d5118ab0519ba30d7ac9e93dc05b96b3529c2d2a9470259", size = 495744, upload-time = "2025-03-03T03:29:50.246Z" },
+    { url = "https://files.pythonhosted.org/packages/77/56/3fb7842746ae5560162dcbbe908d670faaa45ea2069e6e518b734ce127d3/phonopy-2.38.0-cp312-cp312-win_amd64.whl", hash = "sha256:c8ab6d4d77026f7163095a98e479aeba4171765b91cdf1ad2d089267a98ab491", size = 510457, upload-time = "2025-03-03T03:29:52.253Z" },
 ]
 
 [[package]]
