@@ -29,7 +29,7 @@ repository = "https://github.com/exciting/sol-oasis"
 [project.optional-dependencies]
 plugins = [
   "nomad-aitoolkit @ git+https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git@b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8",
-  "nomad-simulations==0.4.0",
+  "nomad-simulations==0.5.0",
   "nomad-schema-plugin-run>=1.0.1",
   "nomad-schema-plugin-simulation-workflow>=1.0.1",
   "nomad-normalizer-plugin-bandstructure>=1.0",
