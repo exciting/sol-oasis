@@ -90,7 +90,7 @@ services:
     volumes:
       - ./configs/nomad.yaml:/app/nomad.yaml
       - /nomad/.volumes/fs:/app/.volumes/fs
-    command: python -m celery -A nomad.processing worker -l info -Q celery --max-tasks-per-child 128
+    command: python -m celery -A nomad.processing worker -l info -Q celery --max-tasks-per-child 64
 
   # nomad app (api + proxy)
   app:
