@@ -2001,14 +2001,14 @@ infrastructure = [
 
 [[package]]
 name = "nomad-normalizer-plugin-bandstructure"
-version = "1.0.3"
+version = "1.0.4"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "nomad-lab" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fb/4d/aace531ef6af3fbfea0c07f31f25e995efd2ee8b43c588a302b7aa162a48/nomad_normalizer_plugin_bandstructure-1.0.3.tar.gz", hash = "sha256:d19af02610663f0382dfc82ed568e7fdb77fbb82fa03d2557ee0020c843c99b2", size = 7150655, upload-time = "2025-03-17T14:01:30.586Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f8/a1/c565274db6171e3605a9917b8cf220c005093abb3f4ac49c9f25d99f9fcb/nomad_normalizer_plugin_bandstructure-1.0.4.tar.gz", hash = "sha256:37b67c3b587676025376fd3a4e9c7d67f2fc8323f2c22ab9f7b8a867e1874bf1", size = 7149474, upload-time = "2025-10-30T19:22:51.096Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4e/67/b9d6328dc96cd24305a0598de63b885576813f163f86aa884f11641c0785/nomad_normalizer_plugin_bandstructure-1.0.3-py3-none-any.whl", hash = "sha256:c86cfa8eab546d2fb6cd0929cf96c81c99ce5df343515e1a048dc49abb90cbe7", size = 12179, upload-time = "2025-03-17T14:01:29.409Z" },
+    { url = "https://files.pythonhosted.org/packages/69/92/ac965a3116df3cda349df50944ce77fc95601e0510620fa20e9fcda14c43/nomad_normalizer_plugin_bandstructure-1.0.4-py3-none-any.whl", hash = "sha256:71311c192321dd9d9eb8d4e4a8850be5b627ffd24527e71eb4d7435b32f7b695", size = 12199, upload-time = "2025-10-30T19:22:49.608Z" },
 ]
 
 [[package]]
