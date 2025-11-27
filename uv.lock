@@ -2098,7 +2098,7 @@ wheels = [
 
 [[package]]
 name = "nomad-parser-plugins-database"
-version = "1.1.1"
+version = "1.1.3"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "nomad-lab" },
@@ -2106,9 +2106,9 @@ dependencies = [
     { name = "nomad-schema-plugin-simulation-workflow" },
     { name = "pydantic" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b2/a5/214a33baa829e23a591c551738ba6867c10f379e07fcb72998315e26d958/nomad_parser_plugins_database-1.1.1.tar.gz", hash = "sha256:99187e4a68ca79f8545320cd574b3f9d06be8d20bd323af0eef9f5d9e88b0b20", size = 3333622, upload-time = "2025-03-17T16:01:09.704Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/77/32/3d7f9e353dbb97ab01bf32b8d0da68439b9f8c214e011a2942e9f4f74de2/nomad_parser_plugins_database-1.1.3.tar.gz", hash = "sha256:1f57bc391727f0543c42a2dd8b259823b0687ad208b2b2c56df086487af3ce80", size = 3333590, upload-time = "2025-11-03T14:08:27.359Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4c/b8/7c29ee9b76c82612acdfba85d6b949ecb0d72dbf519cd666394894ba7bad/nomad_parser_plugins_database-1.1.1-py3-none-any.whl", hash = "sha256:fbcbb04c91399b126463caa222505b39ee734466454d93a7c81a521b94f43a7c", size = 18191, upload-time = "2025-03-17T16:01:08.316Z" },
+    { url = "https://files.pythonhosted.org/packages/a4/c3/9fb61d76c5045f583801f92c7c66964e3665d89cdc11b753fd63f18c6e98/nomad_parser_plugins_database-1.1.3-py3-none-any.whl", hash = "sha256:1bef6d583432c08f292f4445cc90506588c55f7901258d59ece55154ad7ca17a", size = 18205, upload-time = "2025-11-03T14:08:25.861Z" },
 ]
 
 [[package]]
