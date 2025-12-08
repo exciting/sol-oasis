@@ -13,9 +13,9 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  UV_VERSION: 0.7
+  UV_VERSION: 0.9
   PYTHON_VERSION: 3.12
-  JUPYTER_VERSION: 2025-04-14
+  JUPYTER_VERSION: "2025-04-14"
   # If you want to include custom documentation, create a fork of the repo below and link the forked repo here
   NOMAD_DOCS_REPO: https://github.com/FAIRmat-NFDI/nomad-docs.git
   # If you want to skip the tests for some plugins, add them to the list below
@@ -29,6 +29,8 @@ env:
     atomisticparsers
     nomad_aitoolkit
     pynxtools_igor
+    electronicparsers
+    nomad_simulations
 
 permissions:
   contents: write
@@ -117,7 +119,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        service: [app, jupyter]
+        service:
+          - app
+          - jupyter
+          # - cpu-action
+          # - gpu-action
+        include:
+          - service: app
+            target: final
+            image_suffix: ""
+          - service: jupyter
+            target: jupyter
+            image_suffix: /jupyter
+          # - service: gpu-action
+          #   target: gpu_action_final
+          #   image_suffix: /gpu-action
+          # - service: cpu-action
+          #   target: cpu_action_final
+          #   image_suffix: /cpu-action
 
     steps:
       - uses: actions/checkout@v4
@@ -137,7 +156,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}${{ matrix.service == 'jupyter' && '/jupyter' || '' }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}${{ matrix.image_suffix }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -150,30 +169,23 @@ jobs:
             JUPYTER_VERSION=${{ env.JUPYTER_VERSION }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          target: ${{ matrix.service == 'jupyter' && 'jupyter' || 'final' }}
+          target: ${{ matrix.target }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Set APP_IMAGE for app service
-        if: matrix.service == 'app'
+      - name: Set image output
         run: |
           FIRST_TAG=$(echo "${{ steps.meta.outputs.tags }}" | head -n1)
-          echo "APP_IMAGE=$FIRST_TAG" >> $GITHUB_ENV
-
-      - name: Set JUPYTER_IMAGE for jupyter service
-        if: matrix.service == 'jupyter'
-        run: |
-          FIRST_TAG=$(echo "${{ steps.meta.outputs.tags }}" | head -n1)
-          echo "JUPYTER_IMAGE=$FIRST_TAG" >> $GITHUB_ENV
+          echo "${{ matrix.service }}_IMAGE=$FIRST_TAG" >> $GITHUB_ENV
 
     outputs:
-      app_image: ${{ env.APP_IMAGE }}
-      jupyter_image: ${{ env.JUPYTER_IMAGE }}
+      app_image: ${{ env.app_IMAGE }}
+      jupyter_image: ${{ env.jupyter_IMAGE }}
 
-  # Job 4: Run example upload tests
-  example_upload_tests:
-    name: Run example upload tests
+  # Job 4: Run example upload tests and entrypoint tests
+  run_tests:
+    name: Run example upload tests and entrypoint tests
     needs: build
     runs-on: ubuntu-latest
     env:
@@ -192,10 +204,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Start containers
+      - name: Start containers and check app/jupyter container health
         working-directory: tests
         run: |
-          docker compose up -d --quiet-pull
+          if ! docker compose up -d --quiet-pull --wait; then
+            echo "Containers failed health check."
+            echo "Logs for app:"
+            docker logs app
+            echo "Logs for jupyter:"
+            docker logs jupyter
+            exit 1
+          fi
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
@@ -208,38 +227,6 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --all-extras
-
-      - name: Health check
-        run: |
-          #!/bin/bash
-          set -e # Exit immediately if a command exits with a non-zero status.
-
-          secs=300                           # Set interval (duration) in seconds.
-          endTime=$(( $(date +%s) + secs )) # Calculate end time.
-
-          check_app_health() {
-              curl -s localhost:8000/-/health > /dev/null
-          }
-
-          check_jupyter_health() {
-              curl -s localhost:8888/ > /dev/null
-          }
-
-          while [ $(date +%s) -lt $endTime ]; do  # Loop until interval has elapsed.
-            if check_app_health && check_jupyter_health; then
-                echo "Both App and Jupyter health endpoints are responding correctly."
-                exit 0
-            else
-                echo "The App or Jupyter health endpoint is not responding. Retrying in 10 seconds..."
-                sleep 10
-            fi
-          done
-
-          echo "Timeout reached. The App or Jupyter health endpoint did not respond within 5 minutes."
-          echo "Fetching Docker logs for debugging..."
-          docker logs app  # Output logs from the app container
-          docker logs jupyter  # Output logs from the Jupyter container 
-          exit 1
 
       - name: Run tests
         working-directory: tests
