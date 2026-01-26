@@ -2198,7 +2198,6 @@ plugins = [
     { name = "nomad-parser-plugins-workflow" },
     { name = "nomad-schema-plugin-run" },
     { name = "nomad-schema-plugin-simulation-workflow" },
-    { name = "nomad-simulations" },
 ]
 
 [package.metadata]
@@ -2219,7 +2218,6 @@ requires-dist = [
     { name = "nomad-parser-plugins-workflow", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-schema-plugin-run", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
-    { name = "nomad-simulations", marker = "extra == 'plugins'", specifier = "==0.4.0" },
     { name = "setuptools" },
 ]
 provides-extras = ["plugins", "jupyter", "gpu-action", "cpu-action", "dev"]
@@ -2520,19 +2518,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/42/e5/86fe1e8375d3d78b146c9fea39452b41978b61321595936a277ba76c16cb/nomad_schema_plugin_simulation_workflow-1.0.11.tar.gz", hash = "sha256:99cc4fa65b9c0649d7985399688b6fecbb933d97dfcc0f4db59c33aba758bcc8", size = 8866822, upload-time = "2025-10-30T14:25:07.675Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/30/9b9050f57a0d0df22b60a43562ca99f82820c9fe262c2d2619c49cf61845/nomad_schema_plugin_simulation_workflow-1.0.11-py3-none-any.whl", hash = "sha256:5084ebabaa3b8954d998ee16f353b8ec09278af5f8aadce557777a65ed41f479", size = 55657, upload-time = "2025-10-30T14:25:06.141Z" },
-]
-
-[[package]]
-name = "nomad-simulations"
-version = "0.4.0"
-source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
-dependencies = [
-    { name = "matid" },
-    { name = "nomad-lab" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/c6/d6/04d5cd5e56f402cb0dd3bed6b8b72cc94e729043aeca6ea40a38876d7c68/nomad_simulations-0.4.0.tar.gz", hash = "sha256:4903b69db6a4547f53cb2d77368d2ff4a2fdaa3cbc2583b73508a5c60ede6bb8", size = 604397, upload-time = "2025-05-06T14:33:53.979Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/82/05/0aa3b69b0a559778488852bd3652fe2194429b5dbe0e7d2fd1a3c0317763/nomad_simulations-0.4.0-py3-none-any.whl", hash = "sha256:7132640e7cb39373bd37ee732e305b73b5bb36abd2cb5f2eaf81e36612a5c87f", size = 106431, upload-time = "2025-05-06T14:33:52.894Z" },
 ]
 
 [[package]]
