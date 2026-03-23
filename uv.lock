@@ -2306,14 +2306,14 @@ wheels = [
 
 [[package]]
 name = "nomad-normalizer-plugin-spectra"
-version = "1.0.3"
+version = "1.0.4"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "nomad-lab" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f8/d1/b23665806c201b0b15ab429b422e3211d6ce7a00f68397285cc8801447ef/nomad_normalizer_plugin_spectra-1.0.3.tar.gz", hash = "sha256:7968c388f24b34d00b1d840cbda3b9cb0f07f34da03c98fe3ef97a9eae3965b5", size = 102099, upload-time = "2025-03-17T14:35:40.458Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/cc/55/8fbc8a36bcc9b5fe5ceeb9917a74f9711d79d2b5e7ef86701e9ecf14f573/nomad_normalizer_plugin_spectra-1.0.4.tar.gz", hash = "sha256:5723166025d73bae2c002b5d2e8c1e9ae53a31574ed0aff297e75736bf7ec788", size = 102063, upload-time = "2025-10-30T18:48:02.094Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9d/93/9761bd73d85b19684d9bb0aaa511f338dff45b1dcc9fbf6e054610781c46/nomad_normalizer_plugin_spectra-1.0.3-py3-none-any.whl", hash = "sha256:3a9e1def216ef330d29c887691bb4a78d2e387e23d3f2f3b936ec936cb424e84", size = 8512, upload-time = "2025-03-17T14:35:39.045Z" },
+    { url = "https://files.pythonhosted.org/packages/28/55/2a88ce54418a6874503bf8890abfb5350c7542d1e5056720c4659bb6abbe/nomad_normalizer_plugin_spectra-1.0.4-py3-none-any.whl", hash = "sha256:d9228283c3e2aa570d2899c9fc222b7be8620a08e3d33b541dff274ad4c334d7", size = 8537, upload-time = "2025-10-30T18:48:01.086Z" },
 ]
 
 [[package]]
