@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=64", "setuptools-scm"]
+requires = ["setuptools>=82.0.1", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
@@ -21,7 +21,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
 dependencies = [
-  "nomad-lab[parsing, infrastructure]>=1.4.1rc1",
+  "nomad-lab[parsing, infrastructure]>=1.4.2",
   "setuptools",
 ]
 
@@ -40,7 +40,7 @@ plugins = [
   "nomad-normalizer-plugin-spectra>=1.0",
   "nomad-normalizer-plugin-system>=1.0",
   "nomad-normalizer-plugin-simulation-workflow>=1.0",
-  "nomad-parser-plugins-electronic>=1.0.8",
+  "nomad-parser-plugins-electronic>=1.0.16",
   "nomad-parser-plugins-atomistic>=1.0",
   "nomad-parser-plugins-workflow>=1.0",
   "nomad-parser-plugins-database>=1.0",
@@ -49,7 +49,7 @@ jupyter = ["jupyter-events"]
 gpu-action = []
 cpu-action = []
 
-dev = ["nomad-lab[parsing, infrastructure, dev]>=1.4.1rc1"]
+dev = ["nomad-lab[parsing, infrastructure, dev]>=1.4.2"]
 
 [tool.uv]
 extra-index-url = [
