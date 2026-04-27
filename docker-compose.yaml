@@ -139,7 +139,7 @@ services:
       resources:
         limits:
           cpus: "4.0" # Maximum 4 CPU cores
-          memory: 84G # Maximum 4GB RAM
+          memory: 8G # Maximum 4GB RAM
       restart_policy:
         condition: on-failure
         delay: 5s
@@ -358,7 +358,7 @@ services:
       replicas: 0 # Ensures the service isn't started
 
   jobflow_db:
-    image: mongo:5.0.6
+    image: mongo:8.0
     container_name: jobflow_mongo
     restart: unless-stopped
     environment:
