@@ -2156,18 +2156,6 @@ requires-dist = [
 provides-extras = ["plugins", "jupyter", "gpu-action", "cpu-action", "dev"]
 
 [[package]]
-name = "nomad-dos-fingerprints"
-version = "1.0.2"
-source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
-dependencies = [
-    { name = "nomad-lab" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/47/5d/5f6c2d7ef225a92f326103d30a6333a4bc71030f344981d15b6e31b0ec5a/nomad_dos_fingerprints-1.0.2.tar.gz", hash = "sha256:cc70624ee7f680d471e00fa31fccbc1c0bfec6410fa7f980dbaeaff2603249fe", size = 11386, upload-time = "2024-09-11T16:06:43.134Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7f/5d/f0604fa8e642562118ad330088959623ba84cb56c965a23b34c8e2ce225a/nomad_dos_fingerprints-1.0.2-py3-none-any.whl", hash = "sha256:cc01ed88d35f751ef13c89e75faeea16fef16ab8363b3a6fcb4f810afacb6338", size = 10593, upload-time = "2024-09-11T16:06:41.978Z" },
-]
-
-[[package]]
 name = "nomad-lab"
 version = "1.4.1rc1"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
@@ -2268,15 +2256,14 @@ wheels = [
 
 [[package]]
 name = "nomad-normalizer-plugin-dos"
-version = "1.0.6"
+version = "1.0.7"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
-    { name = "nomad-dos-fingerprints" },
     { name = "nomad-lab" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/96/32/638129b4dfe92d11a8173894d9470f7f334a41d07a27067b2150b5162d9f/nomad_normalizer_plugin_dos-1.0.6.tar.gz", hash = "sha256:98c1964c5b2f7d3e1771d39480581486ab66169e903345e99dba6ab35696d899", size = 1088101, upload-time = "2025-10-30T19:14:34.644Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/04/c9/e2ecc8feb73275f2eddeaf5e7599c7b640b87673561ec732ef5636c85b2b/nomad_normalizer_plugin_dos-1.0.7.tar.gz", hash = "sha256:5c4a48e077b3891b43f603a230ece8bed77491ef104300274c5c7ce251cd8f65", size = 1088000, upload-time = "2026-03-30T06:12:43.92Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5f/16/22fd1278363818b9149e6d4652fcdc9fefa018e5e701311f69313f28fb99/nomad_normalizer_plugin_dos-1.0.6-py3-none-any.whl", hash = "sha256:bc4f2e4532d5a516c5c60a5249053eb5712ba566ecbbc48d049925b586009f1d", size = 12930, upload-time = "2025-10-30T19:14:33.322Z" },
+    { url = "https://files.pythonhosted.org/packages/94/37/effccaa54dd491cd7c4ea8b255d22cee9a751c7f1e4a2e786a2455d65ab6/nomad_normalizer_plugin_dos-1.0.7-py3-none-any.whl", hash = "sha256:8c19f80a7c6506882da73a135d847b8c5b25364fcbd41ac0bec984bd021179d1", size = 12589, upload-time = "2026-03-30T06:12:42.319Z" },
 ]
 
 [[package]]
