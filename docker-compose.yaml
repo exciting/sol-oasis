@@ -1,22 +1,4 @@
 services:
-  # broker for celery
-  rabbitmq:
-    restart: unless-stopped
-    image: docker.io/rabbitmq:3.11.5-alpine
-    container_name: nomad_oasis_rabbitmq
-    environment:
-      - RABBITMQ_ERLANG_COOKIE=SWQOKODSQALRPCLNMEQG
-      - RABBITMQ_DEFAULT_USER=rabbitmq
-      - RABBITMQ_DEFAULT_PASS=rabbitmq
-      - RABBITMQ_DEFAULT_VHOST=/
-    volumes:
-      - rabbitmq:/var/lib/rabbitmq
-    healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "--silent", "--quiet", "ping"]
-      interval: 10s
-      timeout: 10s
-      retries: 30
-      start_period: 10s
 
   # the search engine
   elastic:
@@ -106,7 +88,6 @@ services:
     platform: linux/amd64
     environment:
       NOMAD_SERVICE: nomad_oasis_worker
-      NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
       NOMAD_MONGO_HOST: mongo
       NOMAD_LOGSTASH_HOST: logtransfer
@@ -115,8 +96,6 @@ services:
       - ./.env
     depends_on:
       temporal:
-        condition: service_healthy
-      rabbitmq:
         condition: service_healthy
       elastic:
         condition: service_healthy
@@ -164,14 +143,11 @@ services:
   #             capabilities: [gpu]
   #   environment:
   #     NOMAD_SERVICE: nomad_oasis_gpu_worker
-  #     NOMAD_RABBITMQ_HOST: rabbitmq
   #     NOMAD_ELASTIC_HOST: elastic
   #     NOMAD_MONGO_HOST: mongo
   #     NOMAD_LOGSTASH_HOST: logtransfer
   #     NOMAD_TEMPORAL_HOST: temporal
   #   depends_on:
-  #     rabbitmq:
-  #       condition: service_healthy
   #     elastic:
   #       condition: service_healthy
   #     mongo:
@@ -193,7 +169,6 @@ services:
   #     - ./.env
   #   environment:
   #     NOMAD_SERVICE: nomad_oasis_cpu_worker
-  #     NOMAD_RABBITMQ_HOST: rabbitmq
   #     NOMAD_ELASTIC_HOST: elastic
   #     NOMAD_MONGO_HOST: mongo
   #     NOMAD_LOGSTASH_HOST: logtransfer
@@ -205,8 +180,6 @@ services:
   #         cpus: "2.0" # Maximum 2 CPU cores
   #         memory: 8G # Maximum 8GB RAM
   #   depends_on:
-  #     rabbitmq:
-  #       condition: service_healthy
   #     elastic:
   #       condition: service_healthy
   #     mongo:
@@ -228,7 +201,6 @@ services:
       NOMAD_SERVICE: nomad_oasis_app
       NOMAD_SERVICES_API_PORT: 80
       NOMAD_FS_EXTERNAL_WORKING_DIRECTORY: "$PWD"
-      NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
       NOMAD_MONGO_HOST: mongo
       NOMAD_LOGSTASH_HOST: logtransfer
@@ -238,8 +210,6 @@ services:
       - ./.env
     depends_on:
       temporal:
-        condition: service_healthy
-      rabbitmq:
         condition: service_healthy
       elastic:
         condition: service_healthy
@@ -277,7 +247,6 @@ services:
       NOMAD_NORTH_HUB_HOST: north
       NOMAD_SERVICES_API_HOST: app
       NOMAD_FS_EXTERNAL_WORKING_DIRECTORY: "$PWD"
-      NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
       NOMAD_MONGO_HOST: mongo
     env_file:
@@ -378,8 +347,6 @@ volumes:
     name: "nomad_oasis_mongo_config"
   elastic:
     name: "nomad_oasis_elastic"
-  rabbitmq:
-    name: "nomad_oasis_rabbitmq"
   keycloak:
     name: "nomad_oasis_keycloak"
   postgresql:
